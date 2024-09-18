@@ -20,7 +20,7 @@ const SignIn = () => {
                 <View className="relative w-full h-[250px]">
                     <Image source={images.signUpCar} className="z-0 w-full h-[250px]" />
                     <Text className="text-2xl text-black font-JakartaSemiBold absolute bottom-5 left-5">
-                        Welcome
+                        Welcome 👋
                     </Text>
                 </View>
                 <View className="p-5">
