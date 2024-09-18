@@ -5,7 +5,6 @@ import CustomButton from './CustomButton'
 
 const OAuth = () => {
     const handleGooglePress = async () => {
-
     }
     return (
         <View>
