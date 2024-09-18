@@ -38,10 +38,13 @@ const Onboarding = () => {
             </Swiper>
             <CustomButton
                 title={isLastSlide ? "Get Started" : "Next"}
-                onPress={() =>
-                    console.log('pressed')
-                    // isLastSlide ? router.replace("/(auth)/sign-up") : swiperRef.current?.scrollBy(1)
-                }
+                onPress={() => {
+                    if (swiperRef.current) {
+                        isLastSlide ? router.replace("/(auth)/sign-up") : swiperRef.current.scrollBy(1);
+                    } else {
+                        console.log("Swiper ref is null");
+                    }
+                }}
                 className='w-11/12 mt-10'
             />
         </SafeAreaView>
