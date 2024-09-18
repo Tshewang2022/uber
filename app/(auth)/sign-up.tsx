@@ -108,7 +108,7 @@ const SignUp = () => {
                     <View className="bg-white px-7 py-9 rounded-2xl min-h-[300px]">
                         <Text className="text-2xl text-center font-JakartaExtraBold mb-2">Verification</Text>
 
-                        <Text className="font-Jakarta mb-5">
+                        <Text className="font-JakartaSemiBold mb-5">
                             We've sent a verification code to {form.email}
                         </Text>
                         <InputField label='Code' icon={icons.lock} placeholder='12345'
@@ -127,9 +127,12 @@ const SignUp = () => {
                         <Text className="text-3xl font-JakartaBold text-center">
                             Verified
                         </Text>
-                        <Text className="text-base text-gray-400 font-Jakarta text-center">You have successfully verified your account</Text>
+                        <Text className="text-base text-gray-400 font-JakartaSemiBold text-center">You have successfully verified your account</Text>
                         <CustomButton title='Browse Home'
-                            onPress={() => router.push("/(root)/(tabs)/home")}
+                            onPress={() => {
+                                setShowSuccess(false);
+                                router.push("/(root)/(tabs)/home")
+                            }}
                             className='mt-5' />
                     </View>
                 </ReactNativeModal>
