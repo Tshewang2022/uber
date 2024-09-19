@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
 
-const rootLayout = () => {
+import React from 'react'
+import { Stack } from 'expo-router'
+const Layout = () => {
     return (
-        <View>
-            <Text>RootLayout</Text>
-        </View>
+        <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack >
     )
 }
 
-export default rootLayout 
+export default Layout 

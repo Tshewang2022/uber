@@ -1,4 +1,4 @@
-import { ScrollView, View, Image, Text, Alert, Button } from 'react-native'
+import { ScrollView, View, Image, Text, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { icons, images } from '@/constants'
 import InputField from '@/components/InputField'
@@ -7,7 +7,7 @@ import { Link, router } from 'expo-router'
 import OAuth from '@/components/OAuth'
 import { useSignUp } from '@clerk/clerk-expo'
 import ReactNativeModal from 'react-native-modal'
-import { TapGestureHandler } from 'react-native-gesture-handler'
+import { fetchAPI } from '@/lib/fetch'
 
 const SignUp = () => {
     const { isLoaded, signUp, setActive } = useSignUp();
@@ -52,7 +52,15 @@ const SignUp = () => {
             });
 
             if (completeSignUp.status === 'complete') {
-                // toDo: create a database users
+                await fetchAPI("/(api)/user", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        name: form.name,
+                        email: form.email,
+                        clerkId: completeSignUp.createdUserId,
+                    })
+                });
+
                 await setActive({ session: completeSignUp.createdSessionId });
                 setVerification({ ...verification, state: "success" });
             } else {
@@ -64,6 +72,7 @@ const SignUp = () => {
                 error: err.errors[0].longMessage,
                 state: "failed"
             })
+
         }
     }
     return (
