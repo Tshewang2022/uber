@@ -2,6 +2,7 @@ import { Text } from 'react-native'
 import React from 'react'
 import MapView, { PROVIDER_DEFAULT } from "react-native-maps"
 import { useLocationStore } from '@/store'
+import { calculateRegion } from '@/lib/map'
 
 const Maps = () => {
     const {
@@ -12,7 +13,12 @@ const Maps = () => {
     } = useLocationStore();
 
     // extracting the region, we need to calculate from the user lat, logi
-    const region = calculateRegion();
+    const region = calculateRegion({
+        userLongitude,
+        userLatitude,
+        destinationLatitude,
+        destinationLongitude
+    });
 
     return (
         <MapView provider={PROVIDER_DEFAULT}

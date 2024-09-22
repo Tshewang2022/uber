@@ -3,27 +3,27 @@ import { Driver, MarkerData } from "@/types/type";
 
 const directionsAPI = process.env.EXPO_PUBLIC_GOOGLE_API_KEY;
 
-export const generateMarkersFromData = ({
-    data,
-    userLatitude,
-    userLongitude,
-}: {
-    data: Driver[];
-    userLatitude: number;
-    userLongitude: number;
-}): MarkerData[] => {
-    return data.map((driver) => {
-        const latOffset = (Math.random() - 0.5) * 0.01; // Random offset between -0.005 and 0.005
-        const lngOffset = (Math.random() - 0.5) * 0.01; // Random offset between -0.005 and 0.005
+// export const generateMarkersFromData = ({
+//     data,
+//     userLatitude,
+//     userLongitude,
+// }: {
+//     data: Driver[];
+//     userLatitude: number;
+//     userLongitude: number;
+// }): MarkerData[] => {
+//     return data.map((driver) => {
+//         const latOffset = (Math.random() - 0.5) * 0.01; // Random offset between -0.005 and 0.005
+//         const lngOffset = (Math.random() - 0.5) * 0.01; // Random offset between -0.005 and 0.005
 
-        return {
-            latitude: userLatitude + latOffset,
-            longitude: userLongitude + lngOffset,
-            title: `${driver.first_name} ${driver.last_name}`,
-            ...driver,
-        };
-    });
-};
+//         return {
+//             latitude: userLatitude + latOffset,
+//             longitude: userLongitude + lngOffset,
+//             title: `${driver.first_name} ${driver.last_name}`,
+//             ...driver,
+//         };
+//     });
+// };
 
 export const calculateRegion = ({
     userLatitude,
