@@ -7,8 +7,9 @@ import { useLocationStore } from '@/store'
 import { SignedIn, useUser } from '@clerk/clerk-expo'
 import { isLoaded } from 'expo-font'
 import { useEffect, useState } from 'react'
-import { ActivityIndicator, ActivityIndicatorBase, FlatList, Image, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { router } from 'expo-router';
 
 const mockRides = [
     {
@@ -140,7 +141,13 @@ export default function Page() {
     const { user } = useUser()
     const loading = true;
     const handleSignOut = () => { };
-    const handleDestinationPress = () => { };
+    const handleDestinationPress = (
+        location: { latitude: number, longitude: number, address: string }
+    ) => {
+        setDestinationLocation(location);
+        // console.log('this should be working')
+        router.push("/(root)/find-rides");
+    };
 
     return (
         <SafeAreaView className='bg-general-500'>
